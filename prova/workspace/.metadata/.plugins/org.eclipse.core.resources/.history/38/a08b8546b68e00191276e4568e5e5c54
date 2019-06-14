@@ -1,0 +1,56 @@
+package br.com.alfa.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import br.com.alfa.model.Empresa;
+import br.com.alfa.util.HibernateUtil;
+
+public class ProvaDAOImp implements EmpresaDAO {
+
+	@Override
+	public void save(Empresa empresa) {
+		Session session = HibernateUtil.getSessionfactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.save(empresa);
+		t.commit();
+		
+	}
+
+	@Override
+	public Empresa getEmpresa(Long codigo) {
+		Session session = HibernateUtil.getSessionfactory().openSession();
+		
+		return (Empresa) session.load(Empresa.class, codigo);//ou criar a query
+	}
+
+	@Override
+	public void remove(Empresa empresa) {
+		Session session = HibernateUtil.getSessionfactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.delete(empresa);
+		t.commit();
+		
+	}
+
+	@Override
+	public void update(Empresa empresa) {
+		Session session = HibernateUtil.getSessionfactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.update(empresa);
+		t.commit();
+		
+	}
+
+	@Override
+	public List<Empresa> list() {
+		Session session = HibernateUtil.getSessionfactory().openSession();
+		Transaction t = session.beginTransaction();
+		List<Empresa> lista = session.createQuery("from Empresa").list();
+		t.commit();
+		return lista;
+	}
+
+}

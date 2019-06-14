@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+<fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
+<fullyQualifiedTypeName name="br.com.alfa.model.Empresa"/>
+<fullyQualifiedTypeName name="javax.faces.model.DataModel"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.faces.model.ListDataModel"/>
+<fullyQualifiedTypeName name="br.com.alfa.dao.EmpresaDAO"/>
+<fullyQualifiedTypeName name="br.com.alfa.dao.EmpresaDAOImp"/>
+</qualifiedTypeNameHistroy>

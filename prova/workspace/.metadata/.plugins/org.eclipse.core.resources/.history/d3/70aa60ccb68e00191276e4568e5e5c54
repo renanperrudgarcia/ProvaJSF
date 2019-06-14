@@ -1,0 +1,122 @@
+package br.com.alfa.model;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//Serializable objeto será transformado em bytes, melhor performance para transmitir
+//Qualquer tipo de trabalho que envolver persistência ou tramitação de dados, a serialização é necessária.
+
+@Entity
+public class Prova implements Serializable {
+
+	private static final long serialVersionUID = -4838871177007286924L;
+
+	// GenerationType.AUTO, gera uma tabela extra de sequência e atrapalha.
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "codigo")
+	private Long codigo;
+	
+	@Column(name = "nome", length = 60, nullable = false)
+	private String nome;
+	
+	@Column(name = "altura", length = 60, nullable = false)
+	private double autura;
+	
+	@Column(name = "peso", length = 60, nullable = true)
+	private double peso;
+	
+	@Column(name = "sexo", length = 30, nullable = true)
+	private String sexo;
+	
+	@Column(name = "imc", length = 30, nullable = true)
+	private double imc;
+	
+	@Column(name = "classificacao", length = 30, nullable = true)
+	private String classificacao;
+	
+	@Column(name = "cnpj", length = 30, nullable = true)
+	private String cnpj;
+	
+	@Column(name = "data_cadastro", nullable = true)
+	private Date dataCadastro;
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getRazaoSocial() {
+		return razaoSocial;
+	}
+
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
+	}
+
+	public String getNomeFantasia() {
+		return nomeFantasia;
+	}
+
+	public void setNomeFantasia(String nomeFantasia) {
+		this.nomeFantasia = nomeFantasia;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+}

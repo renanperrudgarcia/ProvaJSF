@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+   <title>Gerenciador de Empresas</title>
+</h:head>
+<h:body>
+   <h:form>
+      <p:panel id="panel" header="Gerenciador de Empresas" style="margin-bottom:10px;">
+	      <hr />
+	      <h:messages />
+	      <p:panelGrid columns="2">
+	         <p:outputLabel value="Código:" for="codigo" />
+	         <p:inputText id="codigo" value="#{empresaController.empresa.codigo}" disabled="true" /> 
+	         <p:outputLabel value="Nome:" for="nome" />
+	         <p:inputText id="nome" value="#{empresaController.empresa.nome}" /> 
+	         <p:outputLabel value="Altura:" for="altura" />
+	         <p:inputText id="altura" value="#{empresaController.empresa.altura}" />   
+	         <p:outputLabel value="Peso:" for="peso" />
+	         <p:inputText id="peso" value="#{empresaController.empresa.peso}"/>
+	         <p:outputLabel value="Sexo:" />         
+	         <p:selectOneMenu value="#{empresaController.empresa.sexo}">
+	            <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+	            <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+	            
+	         </p:selectOneMenu> 
+	         <p:outputLabel value="Imc:" for="imc" />
+	         <p:inputText id="imc" value="#{empresaController.empresa.imc}"/>  
+	         <p:outputLabel value="Classificação" for="classificacao" />
+	         <p:inputMask id="classificacao" value="#{empresaController.empresa.telefone}" mask="(99) 99999-9999" />
+	         <p:outputLabel value="CNPJ:" for="cnpj" />
+	         <p:inputMask id="cnpj" value="#{empresaController.empresa.cnpj}" mask="99999999/9999-99"/>
+	         <p:outputLabel value="Data Cadastro:" for="data" />
+	         <p:inputMask id="data" value="#{empresaController.empresa.dataCadastro}" converter="myDateConverter" mask="99/99/9999"/> 
+	         <p:commandButton action="#{empresaController.adicionarEmpresa}" value="Inserir Nova Empresa" />     
+	         <p:commandButton action="#{empresaController.alterarEmpresa}" value="Alterar Empresa" />                                                         
+	      </p:panelGrid>
+      </p:panel>
+      <br />
+      <p:commandButton action="#{empresaController.home}" value="Voltar" />       
+   </h:form>
+</h:body>
+</html>
+
+
+
+

@@ -1,0 +1,73 @@
+package br.com.alfa.controller;
+
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
+
+import br.com.alfa.dao.EmpresaDAO;
+import br.com.alfa.dao.EmpresaDAOImp;
+import br.com.alfa.model.Empresa;
+
+@ManagedBean
+@SessionScoped
+public class EmpresaController {
+	
+	private Empresa empresa;
+	
+	private DataModel<Empresa> listaEmpresas;
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+	
+	public String prepararAdicionarEmpresa() {
+		empresa = new Empresa();
+		return "gerenciarEmpresa";
+	}
+	
+	public String editar(Empresa empresa) {
+	   this.empresa = empresa; 
+	   return "gerenciarEmpresa"; 
+	}
+	
+	public DataModel<Empresa> getListarEmpresas(){
+		List<Empresa> lista = new EmpresaDAOImp().list();
+		listaEmpresas = new ListDataModel<Empresa>(lista);
+		return listaEmpresas;
+	}
+	
+	public String excluirEmpresa(Empresa empresa) {
+		EmpresaDAO dao = new EmpresaDAOImp();
+		dao.remove(empresa);
+		return "index";
+	}
+	
+	public String adicionarEmpresa() {
+		EmpresaDAO dao = new EmpresaDAOImp();
+		dao.save(empresa);
+		return "index";
+	}
+	
+	public String alterarEmpresa() {
+		EmpresaDAO dao = new EmpresaDAOImp();
+		dao.update(empresa);
+		return "index";
+	}
+	
+	public String home(){
+		return "index";
+	}
+}
+
+
+
+
+
+

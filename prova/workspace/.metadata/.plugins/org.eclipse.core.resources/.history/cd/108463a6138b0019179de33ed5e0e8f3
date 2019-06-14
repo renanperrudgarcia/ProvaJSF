@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"> 
+<h:head>
+	<title>Gerenciador de Empresas</title>
+</h:head>
+<h:body>
+	<h:form>
+	    <p:panel id="panel" header="Gerenciador de Empresas" style="margin-bottom:10px;">
+			<hr />
+			<p:dataTable var="empresa" value="#{empresaController.listarEmpresas}"
+				border="5"
+				rows="10"
+				paginator="true"
+	            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+	            rowsPerPageTemplate="5,10,15">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Código" />
+					</f:facet>
+					<h:outputText value="#{empresa.codigo}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Razão Social" />
+					</f:facet>
+					<h:outputText value="#{empresa.razaoSocial}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Nome Fantasia" />
+					</f:facet>
+					<h:outputText value="#{empresa.nomeFantasia}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Endereço" />
+					</f:facet>
+					<h:outputText value="#{empresa.endereco}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Estado" />
+					</f:facet>
+					<h:outputText value="#{empresa.estado}" />
+				</p:column>
+	
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Ação" />
+					</f:facet>
+					<p:commandButton action="#{empresaController.editar(empresa)}" value="Editar" />
+					<h:outputText value="  /  " />
+					<p:commandButton action="#{empresaController.excluirEmpresa(empresa)}" value="Excluir" />
+				</p:column>
+	
+			</p:dataTable>
+		
+		</p:panel>
+		
+		<p:commandButton value="Nova Empresa" action="#{empresaController.prepararAdicionarEmpresa}" />
+	</h:form>
+
+</h:body>
+</html>
